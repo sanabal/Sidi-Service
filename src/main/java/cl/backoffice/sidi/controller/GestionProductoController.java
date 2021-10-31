@@ -29,7 +29,7 @@ public class GestionProductoController {
     @GetMapping("/listar")
     @ApiOperation("Listado de Productos")
     @ApiResponse(code=200,message = "OK")
-    public ResponseEntity<?> listaProductos(){
+    public ResponseEntity<?> listaProductos()throws Exception{
 
         logger.info("Consulta de listar Productos ");
         try {
@@ -45,14 +45,14 @@ public class GestionProductoController {
     @GetMapping("/detalle/{id}")
     @ApiOperation("Detalle de Producto: ")
     @ApiResponse(code=200,message = "OK")
-    public ResponseEntity<?> detalleProducto(@PathVariable @NotNull Long id){
+    public ResponseEntity<?> detalleProducto(@PathVariable @NotNull Long id) throws Exception{
 
         logger.info("Detalle del Producto N:" + id);
         try {
             ProductoDTO detalle = gestionProductoService.detalleProducto(id);
             return new ResponseEntity<>(detalle,HttpStatus.OK);
         }catch (Exception e){
-            logger.info("Problemas al listar Productos");
+            logger.info("Problemas al buscar detalle del producto");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 

@@ -52,7 +52,7 @@ public class CategoriaController {
             CategoriaDTO detalle = categoriaService.detalleCategoria(id);
             return new ResponseEntity<>(detalle, HttpStatus.OK);
         }catch (Exception e){
-            logger.info("Problemas al ir al detalle de la categoria");
+            logger.info("Problemas al buscar detalle de la categoria");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
