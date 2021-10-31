@@ -1,5 +1,6 @@
 package cl.backoffice.sidi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,11 +19,13 @@ public class ComprasProductoRelModel {
     private BigDecimal total;
     private Boolean estado;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private CompraModel compra;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private ProductoModel producto;
 

@@ -1,5 +1,6 @@
 package cl.backoffice.sidi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +30,7 @@ public class CompraModel {
     private String comentario;
     private String estado;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private ClienteModel cliente;

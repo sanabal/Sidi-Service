@@ -20,6 +20,6 @@ public class CategoriaModel {
     private String descripcion;
     private Boolean estado;
 
-    //@OneToMany(mappedBy = "categoria")
-    //private List<ProductoModel> productos;
+    @OneToMany(mappedBy = "categoriaProducto")
+    private List<ProductoModel> productos;
 }

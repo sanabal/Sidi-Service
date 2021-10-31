@@ -1,5 +1,6 @@
 package cl.backoffice.sidi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class ProductoModel {
     @Column(name = "id_categoria")
     private Integer idCategoria;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_categoria",insertable = false, updatable = false)
     private CategoriaModel categoriaProducto;
