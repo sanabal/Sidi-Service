@@ -19,8 +19,9 @@ public class ProductoModel {
     private Long idProducto;
 
     private String nombre;
+
     @Column(name = "id_categoria")
-    private Integer idCategoria;
+    private Long idCategoria;
 
     @JsonIgnore
     @ManyToOne

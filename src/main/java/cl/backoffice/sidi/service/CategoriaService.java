@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface CategoriaService {
 
-    List<CategoriaDTO> listaCategorias();
+    List<CategoriaDTO> listaCategorias() throws Exception;
+
+    CategoriaDTO detalleCategoria(Long id) throws Exception;
+
 }
