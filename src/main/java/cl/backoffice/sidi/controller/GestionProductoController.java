@@ -6,6 +6,7 @@ import cl.backoffice.sidi.service.GestionProductoService;
 import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.Authorization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class GestionProductoController {
     private GestionProductoService gestionProductoService;
 
     @GetMapping("/listar")
-    @ApiOperation("Listado de Productos")
+    @ApiOperation(value="Listado de Productos",authorizations = {@Authorization(value="JWT")})
     @ApiResponse(code=200,message = "OK")
     public ResponseEntity<?> listaProductos()throws Exception{
 
@@ -43,7 +44,7 @@ public class GestionProductoController {
     }
 
     @GetMapping("/detalle/{id}")
-    @ApiOperation("Detalle de Producto: ")
+    @ApiOperation(value = "Detalle de Producto: ",authorizations = {@Authorization(value="JWT")})
     @ApiResponse(code=200,message = "OK")
     public ResponseEntity<?> detalleProducto(@PathVariable @NotNull Long id) throws Exception{
 

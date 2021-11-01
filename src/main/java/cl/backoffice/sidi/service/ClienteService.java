@@ -11,4 +11,6 @@ public interface ClienteService {
     List<ClienteDTO> listaClientes() throws Exception;
 
     ClienteDTO detalleCliente(String id) throws  Exception;
+
+    ClienteDTO crearCliente(ClienteDTO cliente) throws Exception;
 }

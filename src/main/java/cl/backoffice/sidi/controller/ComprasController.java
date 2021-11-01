@@ -5,6 +5,7 @@ import cl.backoffice.sidi.service.ComprasService;
 import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.Authorization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ComprasController {
     private ComprasService comprasService;
 
     @GetMapping("/listar")
-    @ApiOperation("Listado de Compras")
+    @ApiOperation(value = "Listado de Compras",authorizations = {@Authorization(value="JWT")})
     @ApiResponse(code=200,message = "OK")
     public ResponseEntity<?>listaCompras() throws Exception {
         logger.info("Consulta de listado Compras ");
@@ -41,7 +42,7 @@ public class ComprasController {
     }
 
     @GetMapping("/detalle/{id}")
-    @ApiOperation("Detalle de la compra: ")
+    @ApiOperation(value="Detalle de la compra: ",authorizations = {@Authorization(value="JWT")})
     @ApiResponse(code=200,message = "OK")
     public ResponseEntity<?> detalleCompra(@PathVariable @NotNull Long id) throws Exception{
         logger.info("Detalle de la compra N:" + id);

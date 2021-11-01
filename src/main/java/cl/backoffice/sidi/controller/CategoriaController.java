@@ -6,6 +6,9 @@ import cl.backoffice.sidi.dto.CategoriaDTO;
 import cl.backoffice.sidi.service.CategoriaService;
 
 import com.sun.istack.NotNull;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.Authorization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,8 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @GetMapping("/listar")
+    @ApiOperation(value = "Listado de Categorias: ",authorizations = {@Authorization(value="JWT")})
+    @ApiResponse(code=200,message = "OK")
     public ResponseEntity<?> listaCategorias() throws Exception{
         Date date = new Date();
         SimpleDateFormat ft =new SimpleDateFormat ("dd/MM/YYYY  hh:mm:ss");
@@ -46,6 +51,8 @@ public class CategoriaController {
     }
 
     @GetMapping("/detalle/{id}")
+    @ApiOperation(value="Detalle de Categoria: ",authorizations = {@Authorization(value="JWT")})
+    @ApiResponse(code=200,message = "OK")
     public ResponseEntity<?>detalleCategoria(@PathVariable @NotNull Long id) throws Exception{
         logger.info("Detalle de la Categoria N: "+id);
         try {

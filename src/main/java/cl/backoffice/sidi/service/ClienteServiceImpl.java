@@ -51,6 +51,20 @@ public class ClienteServiceImpl implements  ClienteService , InitializingBean {
         return clienteDTO;
     }
 
+    @Override
+    public ClienteDTO crearCliente(ClienteDTO cliente) throws Exception {
+        ClienteModel clienteModel = transfomracionModel(cliente);
+        ClienteModel clienteSave = null;
+        ClienteDTO clienteDTO = null;
+        try{
+            clienteSave = clienteRepository.save(clienteModel);
+            clienteDTO = transformacionDTO(clienteSave);
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+        return clienteDTO;
+    }
+
     private ClienteDTO transformacionDTO(ClienteModel cliente) {
         ClienteDTO clienteDTO = new ClienteDTO();
 
@@ -64,5 +78,19 @@ public class ClienteServiceImpl implements  ClienteService , InitializingBean {
 
 
         return clienteDTO;
+    }
+
+    private ClienteModel transfomracionModel(ClienteDTO clienteDTO){
+        ClienteModel clienteModel = new ClienteModel();
+
+        clienteModel.setId(clienteDTO.getId());
+        clienteModel.setNombre(clienteDTO.getNombre());
+        clienteModel.setApellidos(clienteDTO.getApellidos());
+        clienteModel.setDireccion(clienteDTO.getDireccion());
+        clienteModel.setCelular(clienteDTO.getCelular());
+        clienteModel.setCorreoElectronico(clienteDTO.getCorreo());
+
+        return clienteModel;
+
     }
 }
